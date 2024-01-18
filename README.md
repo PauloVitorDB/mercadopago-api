@@ -1,2 +1,2 @@
-# bellunopayment
+# mercadopago-api
 MercadoPagoAPI
