@@ -1,0 +1,17 @@
+{
+    "name": "pvitor/mercadopago-api",
+    "description": "Mercado pago API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MercadoPago\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4.0",
+        "netresearch/jsonmapper": "^4.1",
+        "phpseclib/phpseclib": "^2.0"
+    }
+}
