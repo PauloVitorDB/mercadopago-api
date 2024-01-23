@@ -41,6 +41,8 @@ class TokenService extends BaseServiceRequest {
         $body = json_encode([
             "grant_type" => "authorization_code",
             "code" => $code,
+            "client_secret" => $this->client_secret,
+            "client_id" => $this->client_id,
             "redirect_uri" => Environment::$APPLICATION_REDIRECT_URI
         ]);
 
