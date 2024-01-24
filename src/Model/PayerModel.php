@@ -3,8 +3,6 @@
 namespace MercadoPagoApi\Model;
 
 class PayerModel {
-
-    private $ip_address;
     
     private $first_name;
     
@@ -15,6 +13,8 @@ class PayerModel {
      * Registration date of the buyer (payer) on your site.
      * **/
     private $registration_date;
+
+    private \MercadoPagoApi\Model\PayerAddressModel $address;
 
     /**
      * Indicates whether the payer has previously made a purchase on your site.
@@ -35,11 +35,34 @@ class PayerModel {
     /**
      * Authentication type used by the payer
      * **/
-    private \MercadoPagoApi\Api\CustomerAuthenticationType $authentication_type;
+    private $authentication_type;
 
     private ContactModel $contact;
 
-    private ShippingModel $ShippingModel;
+
+    public function jsonSerialize()
+    {
+        $json["first_name"] = $this->first_name;
+        $json["last_name"] = $this->last_name;
+
+        $phone = $this->contact->getPhone();
+
+        $json["phone"] = [
+            "area_code" => $phone->getAreaDDD(),
+            "number" => $phone->getPhoneNumber()
+        ];
+
+        $json["address"] = $this->address;
+
+        $json = [
+            "is_prime_user" => $this->is_prime_user,
+            "is_first_purchase_online" => $this->is_first_purchase_online,
+            "last_purchase" => $this->last_purchase,
+            "authentication_type" => $this->authentication_type,
+        ];
+
+        return $json;
+    }
 
     /**
      * Get the value of contact
@@ -57,26 +80,6 @@ class PayerModel {
     public function setContact(ContactModel $contact)
     {
         $this->contact = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of ip
-     */ 
-    public function getIp()
-    {
-        return $this->ip_address;
-    }
-
-    /**
-     * Set the value of ip
-     *
-     * @return  self
-     */ 
-    public function setIp($ip)
-    {
-        $this->ip_address = $ip;
 
         return $this;
     }
@@ -221,23 +224,4 @@ class PayerModel {
         return $this;
     }
 
-    /**
-     * Get the value of ShippingModel
-     */ 
-    public function getShippingModel()
-    {
-        return $this->ShippingModel;
-    }
-
-    /**
-     * Set the value of ShippingModel
-     *
-     * @return  self
-     */ 
-    public function setShippingModel($ShippingModel)
-    {
-        $this->ShippingModel = $ShippingModel;
-
-        return $this;
-    }
 } 

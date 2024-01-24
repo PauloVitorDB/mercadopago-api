@@ -12,28 +12,21 @@ class ShippingModel implements JsonSerializable {
     private bool $express_shipment;
     private bool $pick_up_on_seller;
     
-    
-    /**
-     * @param \MercadoPagoApi\Model\AddressModel $address
-     **/
-    public function __construct($address) {
-        $this->address = $address;
-    }
-
     public function jsonSerialize() {
 
-        $json["shipping"] = [
-            "receiver_address" => $this->address,
+        $json["receiver_address"] = $this->address;
+
+        $json = [
             "width" => $this->width,
             "height" => $this->height
         ];
 
         if(!is_null($this->express_shipment)) {
-            $json["shipping"]["express_shipment"] = (string)$this->express_shipment;
+            $json["express_shipment"] = (string)$this->express_shipment;
         }
 
         if(!is_null($this->pick_up_on_seller)) {
-            $json["shipping"]["pick_up_on_seller"] = (string)$this->pick_up_on_seller;
+            $json["pick_up_on_seller"] = (string)$this->pick_up_on_seller;
         }
 
         return $json;
