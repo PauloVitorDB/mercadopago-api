@@ -7,7 +7,7 @@ class IdentificationModel {
     /**
     * @var \MercadoPagoApi\Api\IdentificationType $type
     */
-    private \MercadoPagoApi\Api\IdentificationType $type;
+    private $type;
 
     private $number;
 
