@@ -3,7 +3,7 @@
 namespace MercadoPagoApi\Model;
 use JsonSerializable;
 
-class BoletoOrderModel extends OrderModel implements JsonSerializable {
+class BoletoOrderModel implements JsonSerializable {
     
     const PAYMENT_METHOD_ID = "bolbradesco";
 
@@ -23,7 +23,7 @@ class BoletoOrderModel extends OrderModel implements JsonSerializable {
 
     private $notification_url;
 
-    private $metadata;
+    private string $metadata;
 
     private $description;
     
@@ -151,7 +151,8 @@ class BoletoOrderModel extends OrderModel implements JsonSerializable {
      */ 
     public function getMetadata()
     {
-        return $this->metadata;
+        $metadata = (is_array($this->metadata) || is_object($this->metadata) ? json_decode($this->metadata, true) : $this->metadata);
+        return $metadata;
     }
 
     /**
@@ -161,7 +162,7 @@ class BoletoOrderModel extends OrderModel implements JsonSerializable {
      */ 
     public function setMetadata($metadata)
     {
-        $this->metadata = $metadata;
+        $this->metadata = (is_array($metadata) || is_object($metadata) ? json_encode($metadata) : $metadata);
 
         return $this;
     }
