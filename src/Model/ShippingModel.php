@@ -7,17 +7,19 @@ use JsonSerializable;
 class ShippingModel implements JsonSerializable {
 
     private \MercadoPagoApi\Model\AddressModel $address;
-    private int $width;
-    private int $height;
+    private $width;
+    private $height;
     private bool $express_shipment;
     private bool $pick_up_on_seller;
     
     public function jsonSerialize() {
 
-        $json = [
-            "width" => $this->width,
-            "height" => $this->height
-        ];
+        if($this->width && $this->height) {
+            $json = [
+                "width" => $this->width,
+                "height" => $this->height
+            ];
+        }
 
         $json["receiver_address"] = $this->address;
 
