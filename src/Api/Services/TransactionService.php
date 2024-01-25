@@ -4,7 +4,6 @@ namespace MercadoPagoApi\Api\Services;
 
 use MercadoPagoApi\Api\BaseServiceRequest;
 use MercadoPagoApi\Api\Environment;
-use MercadoPagoApi\Model\OrderModel;
 use MercadoPagoApi\Util\ApiRest;
 use MercadoPagoApi\Util\ResponseHttpRange;
 use MercadoPagoApi\Util\Response;
