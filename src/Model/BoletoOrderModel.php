@@ -30,7 +30,6 @@ class BoletoOrderModel extends OrderModel implements JsonSerializable {
     public function jsonSerialize() {
 
         $json = [
-            "date_of_expiration" => $this->date_of_expiration,
             "additional_info" => $this->AdditionalInfo,
             "description" => $this->description,
             "metadata" => $this->metadata,
@@ -39,6 +38,10 @@ class BoletoOrderModel extends OrderModel implements JsonSerializable {
             "payment_method_id" => self::PAYMENT_METHOD_ID,
             "transaction_amount" => $this->transaction_amount
         ];
+
+        if($this->date_of_expiration > 3) {
+            $json["date_of_expiration"] = $this->date_of_expiration;
+        }
 
         return $json;
     }

@@ -14,12 +14,12 @@ class ShippingModel implements JsonSerializable {
     
     public function jsonSerialize() {
 
-        $json["receiver_address"] = $this->address;
-
         $json = [
             "width" => $this->width,
             "height" => $this->height
         ];
+
+        $json["receiver_address"] = $this->address;
 
         if(!is_null($this->express_shipment)) {
             $json["express_shipment"] = (string)$this->express_shipment;
