@@ -74,7 +74,10 @@ class TokenService extends BaseServiceRequest {
 
         $body = json_encode([
             "grant_type" => "refresh_token",
-            "refresh_token" => $refresh_token
+            "refresh_token" => $refresh_token,
+            "client_secret" => $this->client_secret,
+            "client_id" => $this->client_id,
+            "redirect_uri" => Environment::$APPLICATION_REDIRECT_URI
         ]);
 
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
