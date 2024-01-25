@@ -26,13 +26,13 @@ class TransactionService extends BaseServiceRequest {
     }
 
     public function createTransaction(
-        OrderModel $order,
+        $payment,
         $uuid
     ) {
 
         $endpoint = '/v1/payments';
 
-        $body = json_encode($order);
+        $body = json_encode($payment);
 
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
