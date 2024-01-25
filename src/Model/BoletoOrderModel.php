@@ -10,7 +10,7 @@ class BoletoOrderModel implements JsonSerializable {
     /**
     * @var \MercadoPagoApi\Model\AdditionalInfoModel $AdditionalInfo
     **/
-    protected \MercadoPagoApi\Model\AdditionalInfoModel $AdditionalInfo = [];
+    private \MercadoPagoApi\Model\AdditionalInfoModel $AdditionalInfo;
 
     /**
      * ISO 8601
