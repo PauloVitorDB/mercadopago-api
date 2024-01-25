@@ -57,11 +57,39 @@ class PayerModel {
         $json = [
             "is_prime_user" => $this->is_prime_user,
             "is_first_purchase_online" => $this->is_first_purchase_online,
-            "last_purchase" => $this->last_purchase,
             "authentication_type" => $this->authentication_type,
         ];
 
+        if($this->last_purchase) {
+            $json["last_purchase"] = $this->last_purchase;
+        }
+
+        if($this->registration_date) {
+            $json["registration_date"] = $this->registration_date;
+        }
+
         return $json;
+    }
+
+    /**
+     * Get the value of contact
+     * @return \MercadoPagoApi\Model\PayerAddressModel
+     */ 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set the value of contact
+     *
+     * @return  self
+     */ 
+    public function setAddress(PayerAddressModel $address)
+    {
+        $this->address = $address;
+
+        return $this;
     }
 
     /**
