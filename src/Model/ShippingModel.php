@@ -95,7 +95,7 @@ class ShippingModel implements JsonSerializable {
     /**
      * Get the value of express_shipment
      */ 
-    public function getExpress_shipment()
+    public function getExpressShipment()
     {
         return $this->express_shipment;
     }
@@ -105,7 +105,7 @@ class ShippingModel implements JsonSerializable {
      *
      * @return  self
      */ 
-    public function setExpress_shipment($express_shipment)
+    public function setExpressShipment($express_shipment)
     {
         $this->express_shipment = $express_shipment;
 
@@ -115,7 +115,7 @@ class ShippingModel implements JsonSerializable {
     /**
      * Get the value of pick_up_on_seller
      */ 
-    public function getPick_up_on_seller()
+    public function getPickUpOnSeller()
     {
         return $this->pick_up_on_seller;
     }
@@ -125,7 +125,7 @@ class ShippingModel implements JsonSerializable {
      *
      * @return  self
      */ 
-    public function setPick_up_on_seller($pick_up_on_seller)
+    public function setPickUpOnSeller($pick_up_on_seller)
     {
         $this->pick_up_on_seller = $pick_up_on_seller;
 
