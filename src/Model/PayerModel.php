@@ -42,23 +42,21 @@ class PayerModel implements \JsonSerializable {
 
     public function jsonSerialize()
     {
-        $json["first_name"] = $this->first_name;
-        $json["last_name"] = $this->last_name;
 
         $phone = $this->contact->getPhone();
 
         $json["phone"] = [
             "area_code" => $phone->getAreaDDD(),
-            "number" => $phone->getPhoneNumber()
-        ];
-
-        $json["address"] = $this->address;
-
-        $json = [
             "is_prime_user" => $this->is_prime_user,
             "is_first_purchase_online" => $this->is_first_purchase_online,
             "authentication_type" => $this->authentication_type,
+            "number" => $phone->getPhoneNumber()
         ];
+
+        $json["first_name"] = $this->first_name;
+        $json["last_name"] = $this->last_name;
+
+        $json["address"] = $this->address;
 
         if($this->last_purchase) {
             $json["last_purchase"] = $this->last_purchase;

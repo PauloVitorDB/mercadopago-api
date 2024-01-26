@@ -25,11 +25,11 @@ class TransactionPayerModel implements \JsonSerializable {
         $json["last_name"] = $this->last_name;
         $json["identification"] = $this->identification;
         $json["email"] = $this->email;
-        $json["id"] = $this->id;
-        $json["type"] = $this->type;
-        $json["entity_type"] = $this->entity_type;
-        $json["email"] = $this->email;
 
+        if($this->id) $json["id"] = $this->id;
+        if($this->type) $json["type"] = $this->type;
+        if($this->entity_type) $json["entity_type"] = $this->entity_type;
+        
         return $json;
     }
 

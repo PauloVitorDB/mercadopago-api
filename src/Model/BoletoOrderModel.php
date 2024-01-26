@@ -162,7 +162,7 @@ class BoletoOrderModel implements JsonSerializable {
      */ 
     public function setMetadata($metadata)
     {
-        $this->metadata = (is_array($metadata) || is_object($metadata) ? json_encode($metadata) : $metadata);
+        $this->metadata = (is_array($metadata) || is_object($metadata) ? json_encode($metadata, JSON_UNESCAPED_UNICODE) : $metadata);
 
         return $this;
     }
