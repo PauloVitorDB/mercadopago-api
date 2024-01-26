@@ -1,8 +1,9 @@
 <?php
 
 namespace MercadoPagoApi\Model;
+use JsonSerializable;
 
-class AdditionalInfoModel {
+class AdditionalInfoModel implements JsonSerializable {
 
     
     private $ip_address;
@@ -106,7 +107,7 @@ class AdditionalInfoModel {
     /**
      * Set $payer
      *
-     * @param  \MercadoPagoApi\Model\PayerModel  $payer  $payer
+     * @param  \MercadoPagoApi\Model\PayerModel  $payer 
      *
      * @return  self
      */ 

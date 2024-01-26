@@ -2,7 +2,7 @@
 
 namespace MercadoPagoApi\Model;
 
-class TransactionPayerModel {
+class TransactionPayerModel implements \JsonSerializable {
     
     private $type;
 

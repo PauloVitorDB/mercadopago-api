@@ -2,7 +2,7 @@
 
 namespace MercadoPagoApi\Model;
 
-class IdentificationModel {
+class IdentificationModel implements \JsonSerializable{
 
     /**
     * @var \MercadoPagoApi\Api\IdentificationType $type
