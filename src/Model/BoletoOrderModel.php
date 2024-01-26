@@ -38,7 +38,7 @@ class BoletoOrderModel implements JsonSerializable {
             "transaction_amount" => $this->transaction_amount
         ];
 
-        if($this->metadata) $json["metadata"] = $this->metadata;
+        if(isset($this->metadata) && $this->metadata) $json["metadata"] = $this->metadata;
 
         if($this->date_of_expiration > 3) {
             $json["date_of_expiration"] = $this->date_of_expiration;
