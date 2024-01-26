@@ -23,11 +23,11 @@ class ShippingModel implements JsonSerializable {
 
         $json["receiver_address"] = $this->address;
 
-        if(!is_null($this->express_shipment)) {
+        if(isset($this->express_shipment) && !is_null($this->express_shipment)) {
             $json["express_shipment"] = (string)$this->express_shipment;
         }
 
-        if(!is_null($this->pick_up_on_seller)) {
+        if(isset($this->express_shipment) && !is_null($this->pick_up_on_seller)) {
             $json["pick_up_on_seller"] = (string)$this->pick_up_on_seller;
         }
 
