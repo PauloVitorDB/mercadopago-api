@@ -40,7 +40,7 @@ abstract class TransactionStatus {
             self::TRANSACTION_PAID_STATUS
         );
     
-        return (in_array((str_replace(' ', '_', trim(strtoupper($transaction_status)))), $allowed_transactions_to_finish));
+        return (in_array((str_replace(' ', '_', trim(strtolower($transaction_status)))), $allowed_transactions_to_finish));
     }
 
 }
