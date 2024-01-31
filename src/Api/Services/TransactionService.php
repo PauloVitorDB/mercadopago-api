@@ -62,4 +62,37 @@ class TransactionService extends BaseServiceRequest {
         
     }
 
+    public function getTransaction(
+        $transaction_id
+    ) {
+
+        $endpoint = '/v1/payments/' . $transaction_id;
+
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
+            $endpoint,
+            ApiRest::GET,
+            [
+                "Authorization: Bearer " . Authentication::$USER_TOKEN
+            ],
+            []
+        );
+      
+        Response::validate($response, $http_code);
+
+        $responseHttpRange = new ResponseHttpRange(200, 299);
+
+        return ( new Response(
+                ApiRest::POST,
+                $response,
+                [],
+                $response,
+                $req_headers,
+                $url,
+                $http_code,
+                $responseHttpRange
+            )
+        );
+        
+    }
+
 }
