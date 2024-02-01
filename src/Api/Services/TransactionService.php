@@ -39,7 +39,7 @@ class TransactionService extends BaseServiceRequest {
             [
                 "Content-Type: application/json",
                 "Authorization: Bearer " . Authentication::$USER_TOKEN,
-                "X-Idempotency-Key" => $uuid
+                "X-Idempotency-Key: " . $uuid
             ],
             $body
         );
