@@ -26,21 +26,26 @@ class TransactionService extends BaseServiceRequest {
 
     public function createTransaction(
         $payment,
-        $uuid
+        $uuid,
+        $device_id = null
     ) {
 
         $endpoint = '/v1/payments';
 
         $body = json_encode($payment);
 
+        $headers = [
+            "Content-Type: application/json",
+            "Authorization: Bearer " . Authentication::$USER_TOKEN,
+            "X-Idempotency-Key: " . $uuid
+        ];
+
+        if($device_id) $headers[] = "X-meli-session-id: " . $device_id ;
+
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::POST,
-            [
-                "Content-Type: application/json",
-                "Authorization: Bearer " . Authentication::$USER_TOKEN,
-                "X-Idempotency-Key: " . $uuid
-            ],
+            $headers,
             $body
         );
       
