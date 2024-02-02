@@ -41,6 +41,7 @@ class Response {
                 throw new Exception("0 - Unable to receive a response from the serve " . json_encode($response));
             break;
             case 400:
+                $response = (is_object($response) && isset($response->cause) ? $response->cause : $response);
                 throw new Exception("400 - Bad Request " . json_encode($response));
             break;
             case 401:
