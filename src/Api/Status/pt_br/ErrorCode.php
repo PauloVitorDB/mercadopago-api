@@ -17,7 +17,9 @@ final class ErrorCode {
         3019 => "A data de expiração do cartão deve estar no formato MM/AA e estar dentro da validade.",
         3020 => "Forneça o nome completo impresso no cartão utilizado na transação.",
         3021 => "Forneça o número do documento (CPF/ou CNPJ) do cartão utilizado na transação.",
-        3032 => "O CVV é um campo obrigatório e não pode estar vazio, nulo ou conter um valor incorreto."
+        3032 => "O CVV é um campo obrigatório e não pode estar vazio, nulo ou conter um valor incorreto.",
+        3034 => "O número do cartão informado é inválido",
+        3033 => "O número do cartão informado é inválido"
     ];
 
 }
