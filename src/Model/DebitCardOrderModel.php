@@ -9,6 +9,7 @@ class DebitCardOrderModel implements JsonSerializable {
 
     private $token;
     private $description;
+    private $statement_descriptor;
     private $installments;
     private $payment_method_id;
     private $issuer_id;
@@ -32,6 +33,7 @@ class DebitCardOrderModel implements JsonSerializable {
         $json = [
             "additional_info" => $this->AdditionalInfo,
             "description" => $this->description,
+            "statement_descriptor" => $this->statement_descriptor,
             "notification_url" => $this->notification_url,
             "payer" => $this->payer,
             "payment_method_id" => $this->payment_method_id,
@@ -243,6 +245,26 @@ class DebitCardOrderModel implements JsonSerializable {
     public function setIssuerId($issuer_id)
     {
         $this->issuer_id = $issuer_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of statement_descriptor
+     */ 
+    public function getStatementDescriptor()
+    {
+        return $this->statement_descriptor;
+    }
+
+    /**
+     * Set the value of statement_descriptor
+     *
+     * @return  self
+     */ 
+    public function setStatementDescriptor($statement_descriptor)
+    {
+        $this->statement_descriptor = $statement_descriptor;
 
         return $this;
     }
